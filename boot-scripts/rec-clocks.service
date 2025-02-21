@@ -1,0 +1,16 @@
+[Unit]
+Description=REC Clocks Display Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/riley/git/rec-clocks/screen16-32-simp_gmt.py
+WorkingDirectory=/home/riley/git/rec-clocks
+Restart=always
+User=root
+Group=root
+StandardOutput=inherit
+StandardError=inherit
+SyslogIdentifier=rec-clocks
+
+[Install]
+WantedBy=multi-user.target
