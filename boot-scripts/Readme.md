@@ -1,20 +1,22 @@
-# REC Clocks Init Scripts
+# pi-ledmatrix-clock Init Scripts
 
-This document provides instructions for setting up and managing the systemd service for the REC Clocks display scripts.
+This document provides instructions for setting up and managing the systemd service for the pi-ledmatrix-clock display scripts.
 
 ## Copying and Installing the Service File
 
-To install the systemd service for the clock display, copy the `rec-clocks.service` file to `/etc/systemd/system/`:
+Update your Username and replace "riley" with your user, and the file path to the location of the git repo.
+
+To install the systemd service for the clock display, copy the `pi-ledmatrix-clock.service` file to `/etc/systemd/system/`:
 
 ```bash
-sudo cp rec-clocks.service /etc/systemd/system/
+sudo cp pi-ledmatrix-clock.service /etc/systemd/system/
 ```
 
 Then, enable and start the service:
 
 ```bash
-sudo systemctl enable rec-clocks
-sudo systemctl start rec-clocks
+sudo systemctl enable pi-ledmatrix-clock
+sudo systemctl start pi-ledmatrix-clock
 ```
 
 ## Checking the Service Status
@@ -22,7 +24,7 @@ sudo systemctl start rec-clocks
 To check if the service is running correctly, use:
 
 ```bash
-sudo systemctl status rec-clocks
+sudo systemctl status pi-ledmatrix-clock
 ```
 
 ## Stopping the Service
@@ -30,7 +32,7 @@ sudo systemctl status rec-clocks
 To stop the service, use:
 
 ```bash
-sudo systemctl stop rec-clocks
+sudo systemctl stop pi-ledmatrix-clock
 ```
 
 ## Restarting the Service
@@ -39,7 +41,7 @@ If you make changes to the script or configuration, reload and restart the servi
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl restart rec-clocks
+sudo systemctl restart pi-ledmatrix-clock
 ```
 
 ## Switching Between Scripts
@@ -47,25 +49,25 @@ sudo systemctl restart rec-clocks
 The service is configured to run `screen16-32-simp_gmt.py` by default. To switch to a different script, edit the service file:
 
 ```bash
-sudo nano /etc/systemd/system/rec-clocks.service
+sudo nano /etc/systemd/system/pi-ledmatrix-clock.service
 ```
 
 Modify the `ExecStart` line to use the desired script. For example:
 
 - To use `screen16-32-simp.py`:
   ```ini
-  ExecStart=/usr/bin/python3 /home/riley/git/rec-clocks/screen16-32-simp.py
+  ExecStart=/usr/bin/python3 /home/riley/git/pi-ledmatrix-clock/screen16-32-simp.py
   ```
 - To use `screen16-32-temp.py`:
   ```ini
-  ExecStart=/usr/bin/python3 /home/riley/git/rec-clocks/screen16-32-temp.py
+  ExecStart=/usr/bin/python3 /home/riley/git/pi-ledmatrix-clock/screen16-32-temp.py
   ```
 
 After making changes, save the file and restart the service:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl restart rec-clocks
+sudo systemctl restart pi-ledmatrix-clock
 ```
 
 ## License

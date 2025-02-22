@@ -1,0 +1,16 @@
+[Unit]
+Description=Simple Pi LED Matrix Clock Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/riley/git/pi-ledmatrix-clock/screen16-32-simp.py
+WorkingDirectory=/home/riley/git/pi-ledmatrix-clock
+Restart=always
+User=root
+Group=root
+StandardOutput=inherit
+StandardError=inherit
+SyslogIdentifier=pi-ledmatrix-clock
+
+[Install]
+WantedBy=multi-user.target
