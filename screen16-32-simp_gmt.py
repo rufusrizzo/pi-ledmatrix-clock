@@ -3,6 +3,12 @@ from datetime import datetime
 import time
 import pytz
 
+#Play with pos_x and pos_y to change where the time is on the matrix
+#To change the color adjust the RGB values defined in text_color
+#The fonts are a pain in the butt, I've included the basic ones that work for me in the "fonts" directory.
+#I got the fonts from rpi-rgb-led-matrix
+
+
 # Initialize the RGB matrix with 16x32 configuration
 def init_matrix():
     options = RGBMatrixOptions()

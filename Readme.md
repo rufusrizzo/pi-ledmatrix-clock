@@ -1,7 +1,7 @@
 
 # RGB Matrix Clock Display
 
-This project includes three Python scripts that display time and temperature information on an RGB LED matrix (16x32). The scripts use the `rpi-rgb-led-matrix` library for controlling the display and MQTT for receiving temperature data.
+This project includes Python scripts that display time or temperature information on an RGB LED matrix (16x32). The scripts use the `rpi-rgb-led-matrix` library for controlling the display and MQTT for receiving temperature data.  
 
 ## Scripts Overview
 
@@ -34,6 +34,7 @@ Install the required Python packages using pip:
 pip install rpi-rgb-led-matrix paho-mqtt pytz
 ```
 
+
 ## Usage
 
 Run the desired script using Python:
@@ -55,6 +56,15 @@ python3 screen16-32-temp.py
 ```
 
 The `screen16-32-temp.py` script requires an MQTT broker to be running and publishing temperature data to the following topics:
+The topic must be named "value"  
+Temp Sample JSON:
+
+```bash
+{
+  "value": "75"
+}
+
+```
 
 - `weather/temp/HIGH`
 - `weather/temp/LOW`
@@ -63,6 +73,13 @@ The `screen16-32-temp.py` script requires an MQTT broker to be running and publi
 The script is configured to connect to an MQTT broker at `192.168.1.202` (modify this as needed in the script).
 
 ## Configuration
+
+### Script Tinkering
+Play with pos_x and pos_y to change where the time is on the matrix
+To change the color adjust the RGB values defined in text_color
+The fonts are a pain, I've included the basic ones that work for me in the "fonts" directory.
+I got the fonts from rpi-rgb-led-matrix
+
 
 ### Timezone Configuration
 The scripts use the `pytz` library to handle timezone conversions. Ensure your system timezone is correctly set, or modify the script to explicitly set a desired timezone. Adjust the timezone in the script using:
@@ -85,10 +102,29 @@ Ensure the required font files (`6x9.bdf`, `5x7.bdf`, and `4x6.bdf`) are availab
 ## Hardware Setup
 These scripts are designed for use with a 16x32 RGB LED matrix connected to a Raspberry Pi. Adjust `hardware_mapping` in the script as needed to match your setup.
 
+I assume you can install Raspberry Pi OS on your Raspberry Pi.
+
+See Hardware directory for more info.
+
+## ToDo
+- [ ] Document Hardware, including pictures, parts, and wiring
+- [ ] Add Big Clock scripts 64x64
+- [ ] Migrate Weather Collection to MQTT
+- [ ] Document Big Clock info
+
+
 ## License
 This project is open-source and licensed under the GNU General Public License v3.0 (GPLv3). See the LICENSE file for more details.
+
+## Credits
+ 
 
 ## Author
 Maintained by RileyC, started on 2/20/2025.
 
+ Original code by Flavio Fernandes from https://github.com/flavio-fernandes/bedclock, licensed under MIT License
+ Adapted for Simplier Code (that I can understand) and displaying data that fits my needs on 2/20/2025.
+
+My Orginal Inspiration came from Lady ada of Adafruit.
+https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi?view=all
 
