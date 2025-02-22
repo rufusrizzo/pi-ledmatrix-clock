@@ -12,6 +12,8 @@ This project includes Python scripts that display time or temperature informatio
 ## Dependencies
 
 ### System Dependencies
+I assume you can install Raspberry Pi OS on your Raspberry Pi 0w or higher, see the Hardware directory for more info.
+
 Ensure you have installed the required system dependencies:
 
 ```bash
@@ -107,6 +109,7 @@ I assume you can install Raspberry Pi OS on your Raspberry Pi.
 See Hardware directory for more info.
 
 ## ToDo
+- [ ] Clean up startup script names
 - [ ] Document Hardware, including pictures, parts, and wiring
 - [ ] Add Big Clock scripts 64x64
 - [ ] Migrate Weather Collection to MQTT
@@ -115,9 +118,6 @@ See Hardware directory for more info.
 
 ## License
 This project is open-source and licensed under the GNU General Public License v3.0 (GPLv3). See the LICENSE file for more details.
-
-## Credits
- 
 
 ## Author
 Maintained by RileyC, started on 2/20/2025.
