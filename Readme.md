@@ -109,10 +109,10 @@ I assume you can install Raspberry Pi OS on your Raspberry Pi.
 See Hardware directory for more info.
 
 ## ToDo
-- [ ] Clean up startup script names
+- [x] Clean up startup script names
 - [ ] Document Hardware, including pictures, parts, and wiring
 - [ ] Add Big Clock scripts 64x64
-- [ ] Migrate Weather Collection to MQTT
+- [x] Migrate Weather Collection to MQTT
 - [ ] Document Big Clock info
 
 
