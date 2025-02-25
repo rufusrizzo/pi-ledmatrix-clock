@@ -111,9 +111,11 @@ See Hardware directory for more info.
 ## ToDo
 - [x] Clean up startup script names
 - [ ] Document Hardware, including pictures, parts, and wiring
-- [ ] Add Big Clock scripts 64x64
+- [x] Add Big Clock scripts 64x64
 - [x] Migrate Weather Collection to MQTT
 - [ ] Document Big Clock info
+- [ ] Add configuration to switch Big clock to files or MQTT
+- [ ] Add configuration to switch screen16-32-temp.py between files or MQTT
 
 
 ## License
