@@ -17,7 +17,7 @@
 DTE=`date +%Y-%m-%d`
 DTET=`date --date="tomorrow" +%Y-%m-%d`
 WORKDIR="/home/riley"
-APIURL='https://api.weather.com/v2/pws/observations/current?stationId=KVAWAYNE72&format=json&units=e&apiKey=45b89a6bf9eb411fb89a6bf9eb011fac'
+APIURL='https://api.weather.com/v2/pws/observations/current?stationId=KVAWAYNE72&format=json&units=e&apiKey=Key'
 #APIURL='https://api.weather.com/v2/pws/observations/current?stationId=<LOCAL Station>&format=json&units=e&apiKey=<API KEY>'
 APITEMPFL="/tmp/localinfo"
 LOGFILE="$WORKDIR/api-lookups/localdata/temps.log"
