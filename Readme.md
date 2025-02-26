@@ -113,8 +113,8 @@ See Hardware directory for more info.
 - [ ] Document Hardware, including pictures, parts, and wiring
 - [x] Add Big Clock scripts 64x64
 - [x] Migrate Weather Collection to MQTT
-- [ ] Document Big Clock info
-- [ ] Add configuration to switch Big clock to files or MQTT
+- [ ] Document Big Clock Weather API lookups
+- [x] Add configuration to switch Big clock to files or MQTT
 - [ ] Add configuration to switch screen16-32-temp.py between files or MQTT
 
 

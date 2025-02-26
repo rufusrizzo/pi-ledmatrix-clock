@@ -10,7 +10,7 @@
 DTE=`date +%Y-%m-%d`
 DTET=`date --date="tomorrow" +%Y-%m-%d`
 WORKDIR="/home/riley"
-APIURL='https://api.weather.com/v2/pws/observations/current?stationId=KVAWAYNE72&format=json&units=e&apiKey=45b89a6bf9eb411fb89a6bf9eb011fac'
+APIURL='https://api.weather.com/v2/pws/observations/current?stationId=KVAWAYNE72&format=json&units=e&apiKey=KEY'
 NOAA_ALERTS_URL="https://api.weather.gov/alerts/active?point=38.06,-78.88&severity=Severe,Extreme"
 APITEMPFL="/tmp/localinfo"
 LOGFILE="$WORKDIR/api-lookups/localdata/temps.log"
@@ -22,12 +22,15 @@ LCURDP="$WORKDIR/api-lookups/localdata/lcurdp"
 CURDP="$WORKDIR/api-lookups/localdata/curdp"
 ALERT_FILE="$WORKDIR/api-lookups/localdata/ALERT"
 CONDITIONS_FILE="$WORKDIR/api-lookups/localdata/conditions"
+CONDITIONS_FILE_OLD="$WORKDIR/api-lookups/localdata/conditions_old"
 ALERT_JSON="$WORKDIR/api-lookups/localdata/alert-$DTE.txt"
 # Setting MQTT parameters
 MQTTENA="True"
 MQTTBROKER="192.168.1.202"
 MQTTTOPIC="weather/temp/"
 MQTTTOPIC2="weather/observed/"
+MQTTTOPIC3="weather/forecast/"
+MQTTTOPIC4="weather/"
 
 # Fetch current observations from Weather Underground
 curl -s "$APIURL" > "$APITEMPFL"
@@ -78,15 +81,27 @@ NOAA_RESPONSE=$(curl -s -H "User-Agent: weather-script/1.0 (your.email@example.c
 if echo "$NOAA_RESPONSE" | jq -e '.features | length > 0' > /dev/null 2>&1; then
     #Severe or Extreme alert exists
     echo "$NOAA_RESPONSE" > "$ALERT_JSON"  # Write JSON to file
-    echo "True" > "$ALERT_FILE"            # Write "True" to ALERT file
+    echo "ALERT" > "$ALERT_FILE"            # Write "ALERT" to ALERT file
+
+    #Backup Current Conditions
+	cp $CONDITIONS_FILE $CONDITIONS_FILE_OLD
     
     #Extract the first two words of the first alert's headline
     HEADLINE=$(echo "$NOAA_RESPONSE" | jq -r '.features[0].properties.headline' | awk '{print $1 " " $2}')
     echo "$HEADLINE" > "$CONDITIONS_FILE"  # Write to conditions file
+	if [[ "$MQTTENA" == "True" ]]; then
+    	mosquitto_pub -h "$MQTTBROKER" -r -t "${MQTTTOPIC3}COND_OLD" -m "`cat ${CONDITIONS_FILE}`"
+    	mosquitto_pub -h "$MQTTBROKER" -r -t "${MQTTTOPIC3}COND" -m "$HEADLINE"
+    	mosquitto_pub -h "$MQTTBROKER" -r -t "${MQTTTOPIC4}ALERT" -m "ALERT"
+	fi
 else
     # No severe alerts
     echo "" > "$ALERT_FILE"           # Set ALERT to False
-    # Optionally clear conditions or leave it as is
-    # echo "" > "$CONDITIONS_FILE"         # Uncomment to clear conditions if no alert
+    #Restore Current Conditions
+	cp $CONDITIONS_FILE_OLD $CONDITIONS_FILE 
+
+	if [[ "$MQTTENA" == "True" ]]; then
+    	mosquitto_pub -h "$MQTTBROKER" -r -t "${MQTTTOPIC4}ALERT" -m "Clear"
+	fi
 fi
 
