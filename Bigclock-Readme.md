@@ -11,6 +11,7 @@ This script displays a clock and weather information on a 64x64 RGB LED matrix u
 - Can show Severe and Extreme Weather alerts from NOAA.gov
 - Fetches weather data from either local files or MQTT
 - Adjustable brightness 
+- Scale back the data shown between certain hours
 - Debug mode for additional logging
 
 ![Big Clock 1](hardware/images/big-clock-1.jpg)
