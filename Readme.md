@@ -1,7 +1,7 @@
 
 # RGB Matrix Clock Display
 
-This project includes Python scripts that display time or temperature information on an RGB LED matrix (16x32). The scripts use the `rpi-rgb-led-matrix` library for controlling the display and MQTT for receiving temperature data.  
+This project includes Python scripts that display time or temperature information on an RGB LED matrix (16x32). The scripts use the `rpi-rgb-led-matrix` library for controlling the display and MQTT for receiving temperature data.  You could deploy multiple clocks to display the same weather data.
 
 ## Scripts Overview
 
@@ -60,14 +60,6 @@ python3 screen16-32-temp.py
 
 The `screen16-32-temp.py` script requires an MQTT broker to be running and publishing temperature data to the following topics:
 The topic must be named "value"  
-Temp Sample JSON:
-
-```bash
-{
-  "value": "75"
-}
-
-```
 
 - `weather/temp/HIGH`
 - `weather/temp/LOW`
