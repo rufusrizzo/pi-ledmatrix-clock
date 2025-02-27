@@ -8,6 +8,7 @@ This project includes Python scripts that display time or temperature informatio
 - `screen16-32-simp.py` - Displays the local time on the matrix.
 - `screen16-32-simp_gmt.py` - Displays both local time and GMT time on the matrix.
 - `screen16-32-temp.py` - Displays the local time along with current, high, and low temperature readings received via MQTT.
+- `screen64-64-weather.py` - [The Bigclock needs it's own Readme](Bigclock-Readme.md) Also check out the Readme.md in api-lookups
 
 ## Dependencies
 
@@ -113,7 +114,7 @@ See Hardware directory for more info.
 - [ ] Document Hardware, including pictures, parts, and wiring
 - [x] Add Big Clock scripts 64x64
 - [x] Migrate Weather Collection to MQTT
-- [ ] Document Big Clock Weather API lookups
+- [X] Document Big Clock Weather API lookups
 - [x] Add configuration to switch Big clock to files or MQTT
 - [ ] Add configuration to switch screen16-32-temp.py between files or MQTT
 
