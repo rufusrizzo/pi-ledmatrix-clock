@@ -1,4 +1,27 @@
 # Weather Data Fetching Scripts
+# Table of Contents
+- [Weather Data Fetching Scripts](#weather-data-fetching-scripts)
+  - [Overview](#overview)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [`wu-temps.sh`](#wu-tempssh)
+    - [`wu-forecast.sh`](#wu-forecastsh)
+    - [`clock-custom-alert.sh`](#clock-custom-alertsh)
+      - [Usage](#usage-1)
+      - [How It Works](#how-it-works)
+  - [Configuration](#configuration)
+  - [Scheduling with Cron](#scheduling-with-cron)
+  - [Troubleshooting](#troubleshooting)
+  - [MQTT Topics](#mqtt-topics)
+  - [Data Files Used in the Weather Scripts](#data-files-used-in-the-weather-scripts)
+    - [Temporary API Data Files](#temporary-api-data-files)
+    - [Persistent Weather Data Files](#persistent-weather-data-files)
+    - [Weather Condition and Alert Files](#weather-condition-and-alert-files)
+    - [MQTT Data Publishing](#mqtt-data-publishing)
+  - [License](#license)
+  - [Author](#author)
+
 
 ## Overview
 This repository contains two Bash scripts for retrieving weather data:
